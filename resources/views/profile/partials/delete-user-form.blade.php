@@ -3,12 +3,14 @@
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Delete Account') }}
         </h2>
+
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
         </p>
     </header>
-     <!-- Modal trigger button -->
-     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-account">
+
+    <!-- Modal trigger button -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-account">
         {{__('Delete Account')}}
     </button>
 
@@ -38,8 +40,10 @@
 
 
                         <div class="input-group">
-                        <input id="password" name="password" type="password" class="form-control" placeholder="{{ __('Password') }}" />
-                        @error('password')
+
+                            <input id="password" name="password" type="password" class="form-control" placeholder="{{ __('Password') }}" />
+
+                            @error('password')
                             <span class="invalid-feedback mt-2" role="alert">
                                 <strong>{{ $errors->userDeletion->get('password')}}</strong>
                             </span>
@@ -56,7 +60,7 @@
 
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 
 </section>

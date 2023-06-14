@@ -3,13 +3,16 @@
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Update Password') }}
         </h2>
+
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
     </header>
+
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
+
         <div class="mb-2">
             <label for="current_password">{{__('Current Password')}}</label>
             <input class="mt-1 form-control" type="password" name="current_password" id="current_password" autocomplete="current-password">
@@ -19,6 +22,7 @@
             </span>
             @enderror
         </div>
+
         <div class="mb-2">
             <label for="password">{{__('New Password')}}</label>
             <input class="mt-1 form-control" type="password" name="password" id="password" autocomplete="new-password">
@@ -28,6 +32,7 @@
             </span>
             @enderror
         </div>
+
         <div class="mb-2">
 
             <label for="password_confirmation">{{__('Confirm Password')}}</label>
@@ -38,6 +43,7 @@
             </span>
             @enderror
         </div>
+
         <div class="d-flex align-items-center gap-4">
             <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
 
