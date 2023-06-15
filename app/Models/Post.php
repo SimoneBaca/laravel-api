@@ -14,6 +14,24 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'content', 'cover_image', 'slug', 'category_id' ,'user_id'];
+
+    protected $appends = ['full_img_path'];
+
+  
+    protected $hidden = [
+        'img',
+    ];
+
+   
+    public function getFullImgPathAttribute() {
+        $fullPath = null;
+        if ($this->img) {
+            $fullPath = asset('storage/'.$this->img);
+        }
+
+        return $fullPath;
+    }   
+
     public static function generateSlug($title)
     {
         return Str::slug($title, '-');
