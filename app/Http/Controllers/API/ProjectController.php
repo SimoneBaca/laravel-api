@@ -10,14 +10,24 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('type', 'technologies')->paginate(6);
+        $posts = Post::where('slug')->with('type', 'technologies')->first();
 
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'message' => 'ok',
-            'posts' => $posts,
-        ]);
+        if ($posts) {
+            return response()->json([
+                'success' => true,
+                'code' => 200,
+                'message' => 'ok',
+                'project' => $posts
+            ]);
+        }
+        else {
+            return response()->json([
+                'success' => false,
+                'code' => 404,
+                'message' => 'Not Found',
+            ]);
+        }
+    }
         
     }
-}
+
