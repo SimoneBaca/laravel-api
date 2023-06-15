@@ -4,13 +4,13 @@
 @section('content')
 
 
-<h1 class="text-muted display-5 py-3">Tags Page</h1>
+<h1 class="text-muted display-5 py-3">Categories Page</h1>
 
 @include('partials.validation_errors')
 @include('partials.session_message')
 <div class="row">
     <div class="col-6">
-        <form action="{{route('admin.tags.store')}}" method="post">
+        <form action="{{route('admin.categories.store')}}" method="post">
             @csrf
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Full Stack" aria-label="Button" name="name" id="name">
@@ -34,32 +34,17 @@
                 </thead>
                 <tbody>
 
-                    @forelse ($tags as $tag)
+                    @forelse ($categories as $category)
                     <tr class="">
-                        <td scope="row">{{$tag->id}}</td>
+                        <td scope="row">{{$category->id}}</td>
+                        <td>{{$category->name}}</td>
+                        <td>{{$category->slug}}</td>
                         <td>
-
-                            <form action="{{route('admin.tags.update', $tag)}}" method="post">
-                                @csrf
-                                @method('PATCH')
-                                <div class="input-group">
-                                    <input class="form-control border-0 bg-transparent" type="text" name="name" id="name" value="{{$tag->name}}" aria-describedby="editInput-{{$tag->id}}">
-
-                                    <span class="input-group-text border-0">
-                                        <i class="fa-solid fa-pencil" id="editInput-{{$tag->id}}"></i>
-                                    </span>
-                                </div>
-                                <small>Press enter to update the tag name</small>
-                            </form>
-
-                        </td>
-                        <td>{{$tag->slug}}</td>
-                        <td>
-                            <span class="badge bg-dark">{{ $tag->posts->count()}}</span>
+                            <span class="badge bg-dark">{{ $category->posts->count()}}</span>
 
                         </td>
                         <td>
-                            <form action="{{route('admin.tags.destroy', $tag)}}" method="post">
+                            <form action="{{route('admin.categories.destroy', $category)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">
@@ -70,7 +55,7 @@
                     </tr>
                     @empty
                     <tr class="">
-                        <td scope="row"> 👈 Add your first tag </td>
+                        <td scope="row"> 👈 Add your first category </td>
                     </tr>
 
                     @endforelse
